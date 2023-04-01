@@ -9,7 +9,7 @@ import {
 
 export const axiosConfig = axios.create({
   // baseURL: process.env.NEXT_PUBLIC_URL,
-  baseURL: "http://localhost:4000",
+  baseURL: "https://ce28-2800-484-6d7c-1d20-5df2-4903-b020-ada0.ngrok.io",
   withCredentials: true,
 });
 
