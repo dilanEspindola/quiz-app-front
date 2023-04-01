@@ -1,0 +1,28 @@
+import axios, { AxiosRequestConfig } from "axios";
+import {
+  errorHandleHttp,
+  updateNotification,
+  loadingNofication,
+  errorNotifications,
+  getCheckValidationCookie,
+} from "@/helpers";
+
+export const axiosConfig = axios.create({
+  // baseURL: process.env.NEXT_PUBLIC_URL,
+  baseURL: "http://localhost:4000",
+  withCredentials: true,
+});
+
+export const axiosInterceptors = () => {
+  axiosConfig.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      const errorMessage = errorHandleHttp(error);
+      errorNotifications(errorMessage);
+
+      return Promise.reject(error);
+    }
+  );
+};
